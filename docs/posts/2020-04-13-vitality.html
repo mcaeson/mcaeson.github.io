@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Chris Dornan - The Vitality of Haskell</title>
+        <link rel="stylesheet" href="../assets/scss/site.css" />
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+    </head>
+    <body>
+        <header class="uk-section-secondary" uk-sticky>
+
+    <nav class="uk-navbar" uk-navbar style="display: flex; justify-content: space-between;">
+        <ul class="uk-navbar-nav">
+            <li><a href="../"><span uk-icon="home"></span>&nbsp;Chris Dornan</a></li>
+        </ul>
+        <div class="uk-navbar-flip">
+            <ul class="uk-navbar-nav">
+                <li><a href="../pages/about.html"><span uk-icon="info"></span>&nbsp;About</a></li>
+                <li>
+                    <a href="#"><span uk-icon="menu"></span>Series</a>
+                    <div class="uk-navbar-dropdown">
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <li><a class="cd-nav-dropdown-a" href="../pages/extension-reviews.html">Extension Reviews</a></li>
+                        </ul>
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <li><a class="cd-nav-dropdown-a" href="../pages/package-reviews.html">Package Reviews</a></li>
+                        </ul>
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <li><a class="cd-nav-dropdown-a" href="../pages/structure-reviews.html">Structure Reviews</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="../pages/archive.html"><span uk-icon="database"></span>&nbsp;Archives</a></li>
+                <li><a href="../rss.xml"><span uk-icon="rss"></span>&nbsp;RSS</a></li>
+                <li><a href="../atom.xml"><span uk-icon="rss"></span>&nbsp;Atom</a></li>
+            </ul>
+        </div>
+    </nav>
+
+</header>
+<div class="uk-margin"></div>
+
+
+        <main uk-height-viewport="expand: true">
+          <div class="uk-container cd-article-container cd-running-font">
+            <article class="uk-article">
+    <h1 class="uk-article-title">The Vitality of Haskell</h1>
+    <p class="uk-subtitle" style="font-style:italic;">Strong types allow us to break stuff and move on</p>
+    <p class="uk-article-meta">
+        Posted on 2020-04-13
+        
+    </p>
+    
+    <p>While the GHC approach to language extensions have facilitated language evolution that is only part of the story. Strong types have allowed even the <code>base</code> package on which everything is generally based to evolve continuously. The Haskell standard libraries are really quite radically different from the early days (when we had no hierarchical modules, no monads or any kind of package system). Even recent iterations have been fixing up some quite basic structures.</p>
+<p>(While I am glad of these fixes on the whole, it would be possible to have too much of a good thing. Not every change has met with universal approval. Disruption isn’t without cost.)</p>
+<p>Outside of the core we have seen continuous development of alternative preludes, streams packages, lens packages and so on. Package maintainers are happy to make breaking changes, as long as the breakage manifests statically with type errors.</p>
+<p>This vitality I think has been really important aspect of Haskell’s evolution, something that have been quite constant since the start.</p>
+    <hr>
+    <p><i>Got an issue with any of this?</i>
+       <a href="https://github.com/cdornan/cd-blog/issues/18">Please share</a>
+       or drop me a line (see below).
+<div class="uk-margin-small-top"></div>
+</article>
+
+          </div>
+        </main>
+
+        <footer class="cd-footer uk-section uk-section-secondary">
+          <div class="uk-container">
+            <div class="uk-grid-medium uk-child-width-1-3@m uk-child-width-1-1" uk-grid>
+              <div style="text-align: center;">
+                <h4 class>Contact</h3>
+                <p><span uk-icon="mail"></span> <a href="mailto:chris@chrisdornan.com">chris@chrisdornan.com</a></p>
+                <p><span uk-icon="github"></span> <a href="https://github.com/cdornan">cdornan</a></p>
+                <p><span uk-icon="twitter"></span> <a href="https://twitter.com/cdornan">cdornan</a></p>
+              </div>
+              <div style="text-align: center;">
+                <h4 class>Blog</h3>
+                <p><span uk-icon="home"></span> <a href="../">Home</a></p>
+                <p><span uk-icon="info"></span> <a href="../contact.html">About</a></p>
+                <p><span uk-icon="code"></span> <a href="https://github.com/cdornan/cd-blog">Code</a></p>
+                </p>
+              </div>
+              <div style="text-align: center;">
+                <h4 class>Credits</h3>
+                <p><img data-src="/assets/images/lambda.png" uk-img>Built with <a href="https://jaspervdj.be/hakyll/">Hakyll</a></p>
+                </p>
+              </div>
+            </div>
+          </div>
+        </footer>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145166163-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'UA-145166163-1');
+        </script>
+        <script src="https://getuikit.com/assets/uikit/dist/js/uikit.js"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.3.7/js/uikit.min.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.3.7/js/uikit-icons.min.js"></script>
+    </body>
+</html>

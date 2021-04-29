@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"
+    xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>mcaeson data-blog</title>
+        <link>http://mcaeson.github.io</link>
+        <description><![CDATA[The mcaeson data blog]]></description>
+        <atom:link href="http://mcaeson.github.io/rss.xml" rel="self"
+                   type="application/rss+xml" />
+        <lastBuildDate>Thu, 29 Apr 2021 00:00:00 UT</lastBuildDate>
+        <item>
+    <title>mcaeson</title>
+    <link>http://mcaeson.github.io/posts/2021-04-29-cmmt-intro.html</link>
+    <description><![CDATA[This is the post description]]></description>
+    <pubDate>Thu, 29 Apr 2021 00:00:00 UT</pubDate>
+    <guid>http://mcaeson.github.io/posts/2021-04-29-cmmt-intro.html</guid>
+    <dc:creator>mcaeson devs</dc:creator>
+</item>
+
+    </channel>
+</rss>

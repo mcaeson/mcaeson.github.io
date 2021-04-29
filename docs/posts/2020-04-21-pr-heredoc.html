@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Chris Dornan - heredoc</title>
+        <link rel="stylesheet" href="../assets/scss/site.css" />
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+    </head>
+    <body>
+        <header class="uk-section-secondary" uk-sticky>
+
+    <nav class="uk-navbar" uk-navbar style="display: flex; justify-content: space-between;">
+        <ul class="uk-navbar-nav">
+            <li><a href="../"><span uk-icon="home"></span>&nbsp;Chris Dornan</a></li>
+        </ul>
+        <div class="uk-navbar-flip">
+            <ul class="uk-navbar-nav">
+                <li><a href="../pages/about.html"><span uk-icon="info"></span>&nbsp;About</a></li>
+                <li>
+                    <a href="#"><span uk-icon="menu"></span>Series</a>
+                    <div class="uk-navbar-dropdown">
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <li><a class="cd-nav-dropdown-a" href="../pages/extension-reviews.html">Extension Reviews</a></li>
+                        </ul>
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <li><a class="cd-nav-dropdown-a" href="../pages/package-reviews.html">Package Reviews</a></li>
+                        </ul>
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <li><a class="cd-nav-dropdown-a" href="../pages/structure-reviews.html">Structure Reviews</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="../pages/archive.html"><span uk-icon="database"></span>&nbsp;Archives</a></li>
+                <li><a href="../rss.xml"><span uk-icon="rss"></span>&nbsp;RSS</a></li>
+                <li><a href="../atom.xml"><span uk-icon="rss"></span>&nbsp;Atom</a></li>
+            </ul>
+        </div>
+    </nav>
+
+</header>
+<div class="uk-margin"></div>
+
+
+        <main uk-height-viewport="expand: true">
+          <div class="uk-container cd-article-container cd-running-font">
+            <article class="uk-article">
+    <h1 class="uk-article-title">heredoc</h1>
+    <p class="uk-subtitle" style="font-style:italic;">a simple but highly useful package</p>
+    <p class="uk-article-meta">
+        Posted on 2020-04-21
+        
+    </p>
+    <hr />
+<div class="cd-pr-row"><div class="cd-pr-name">heredoc</div>
+<div class="cd-pr-vrsn"><a title="Hackage page" href="https://hackage.haskell.org/package/heredoc-0.2.0.0">0.2.0.0</a></div>
+<div class="cd-pr-date"><a title="review article" href="../posts/2020-04-21-pr-heredoc.html">2020-04-21</a></div>
+<div class="cd-pr-home"><a title="package home page" href="http://hackage.haskell.org/package/heredoc"><span uk-icon="home"></span></a></div>
+<div class="cd-pr-issu"><a title="package issue tracker" href="http://hackage.haskell.org/package/heredoc"><span uk-icon="warning"></span></a></div>
+<a title="review article" class="cd-pr-block-link" href="../posts/2020-04-21-pr-heredoc.html">
+<div class="cd-pr-strs">
+<svg height="25" width="23" class="cd-star">
+  <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero; fill: #ffd055;"></polygon>
+</svg>
+<svg height="25" width="23" class="cd-star">
+  <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero; fill: #ffd055;"></polygon>
+</svg>
+<svg height="25" width="23" class="cd-star">
+  <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero; fill: #ffd055;"></polygon>
+</svg>
+<svg height="25" width="23" class="cd-star">
+  <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero; fill: #ffd055;"></polygon>
+</svg>
+<svg height="25" width="23" class="cd-star">
+  <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero; fill: #ffd055;"></polygon>
+</svg>
+<svg height="25" width="23" class="cd-star">
+  <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero; fill: #222222; visibility: hidden;"></polygon>
+</svg>
+</div>
+</a>
+</div>
+<hr />
+
+    <div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ot">{-# LANGUAGE QuasiQuotes #-}</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="dt">Text.Heredoc</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>main <span class="ot">=</span> <span class="fu">putStr</span> [here|</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>heredoc is an insanely simple but useful package that makes</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>the most straightforward use of `QuasiQuotes`. If you need</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>to embed a block of text in a module then `heredoc` is your</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>friend.</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>|]</span></code></pre></div>
+<p><code>heredocs</code> has a couple of extra tricks. The beautifully clear and simple <a href="https://hackage.haskell.org/package/heredoc-0.2.0.0/docs/Text-Heredoc.html"><code>heredoc</code> Haddocks</a> have the details.</p>
+    <hr>
+    <p><i>Got an issue with any of this?</i>
+       <a href="https://github.com/cdornan/cd-blog/issues/26">Please share</a>
+       or drop me a line (see below).
+<div class="uk-margin-small-top"></div>
+</article>
+
+          </div>
+        </main>
+
+        <footer class="cd-footer uk-section uk-section-secondary">
+          <div class="uk-container">
+            <div class="uk-grid-medium uk-child-width-1-3@m uk-child-width-1-1" uk-grid>
+              <div style="text-align: center;">
+                <h4 class>Contact</h3>
+                <p><span uk-icon="mail"></span> <a href="mailto:chris@chrisdornan.com">chris@chrisdornan.com</a></p>
+                <p><span uk-icon="github"></span> <a href="https://github.com/cdornan">cdornan</a></p>
+                <p><span uk-icon="twitter"></span> <a href="https://twitter.com/cdornan">cdornan</a></p>
+              </div>
+              <div style="text-align: center;">
+                <h4 class>Blog</h3>
+                <p><span uk-icon="home"></span> <a href="../">Home</a></p>
+                <p><span uk-icon="info"></span> <a href="../contact.html">About</a></p>
+                <p><span uk-icon="code"></span> <a href="https://github.com/cdornan/cd-blog">Code</a></p>
+                </p>
+              </div>
+              <div style="text-align: center;">
+                <h4 class>Credits</h3>
+                <p><img data-src="/assets/images/lambda.png" uk-img>Built with <a href="https://jaspervdj.be/hakyll/">Hakyll</a></p>
+                </p>
+              </div>
+            </div>
+          </div>
+        </footer>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145166163-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'UA-145166163-1');
+        </script>
+        <script src="https://getuikit.com/assets/uikit/dist/js/uikit.js"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.3.7/js/uikit.min.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.3.7/js/uikit-icons.min.js"></script>
+    </body>
+</html>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>mcaeson data-blog</title>
+    <link href="http://mcaeson.github.io/atom.xml" rel="self" />
+    <link href="http://mcaeson.github.io" />
+    <id>http://mcaeson.github.io/atom.xml</id>
+    <author>
+        <name>mcaeson devs</name>
+        <email>mcaeson@chrisdornan.com</email>
+    </author>
+    <updated>2021-04-29T00:00:00Z</updated>
+    <entry>
+    <title>mcaeson</title>
+    <link href="http://mcaeson.github.io/posts/2021-04-29-cmmt-intro.html" />
+    <id>http://mcaeson.github.io/posts/2021-04-29-cmmt-intro.html</id>
+    <published>2021-04-29T00:00:00Z</published>
+    <updated>2021-04-29T00:00:00Z</updated>
+    <summary type="html"><![CDATA[This is the post description]]></summary>
+</entry>
+
+</feed>

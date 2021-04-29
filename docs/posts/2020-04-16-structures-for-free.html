@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Chris Dornan - Structures for Free</title>
+        <link rel="stylesheet" href="../assets/scss/site.css" />
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+    </head>
+    <body>
+        <header class="uk-section-secondary" uk-sticky>
+
+    <nav class="uk-navbar" uk-navbar style="display: flex; justify-content: space-between;">
+        <ul class="uk-navbar-nav">
+            <li><a href="../"><span uk-icon="home"></span>&nbsp;Chris Dornan</a></li>
+        </ul>
+        <div class="uk-navbar-flip">
+            <ul class="uk-navbar-nav">
+                <li><a href="../pages/about.html"><span uk-icon="info"></span>&nbsp;About</a></li>
+                <li>
+                    <a href="#"><span uk-icon="menu"></span>Series</a>
+                    <div class="uk-navbar-dropdown">
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <li><a class="cd-nav-dropdown-a" href="../pages/extension-reviews.html">Extension Reviews</a></li>
+                        </ul>
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <li><a class="cd-nav-dropdown-a" href="../pages/package-reviews.html">Package Reviews</a></li>
+                        </ul>
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <li><a class="cd-nav-dropdown-a" href="../pages/structure-reviews.html">Structure Reviews</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="../pages/archive.html"><span uk-icon="database"></span>&nbsp;Archives</a></li>
+                <li><a href="../rss.xml"><span uk-icon="rss"></span>&nbsp;RSS</a></li>
+                <li><a href="../atom.xml"><span uk-icon="rss"></span>&nbsp;Atom</a></li>
+            </ul>
+        </div>
+    </nav>
+
+</header>
+<div class="uk-margin"></div>
+
+
+        <main uk-height-viewport="expand: true">
+          <div class="uk-container cd-article-container cd-running-font">
+            <article class="uk-article">
+    <h1 class="uk-article-title">Structures for Free</h1>
+    <p class="uk-subtitle" style="font-style:italic;">how base is rightly taken for granted</p>
+    <p class="uk-article-meta">
+        Posted on 2020-04-16
+        
+    </p>
+    
+    <p>Listening to <a href="https://corecursive.com/050-sam-ritchie-portal-abstractions-2/">this week’s CoRecursive podcast</a> in which Sam Ritchie explains to Adam Gordon Bell his idea of <em>portal abstractions</em> through a specific example — using Semigroups and Monoids to structure an data analytics system for processing Twitter metrics — I realised that I had made almost the exact same evolution of development, but in Haskell, and with a somewhat different understanding of what I had done.</p>
+<p><em>Portal abstractions</em>, the title of the podcast, captures the idea of translating a tool from one area (e.g., abstract algebra) to another (analytics software). In the discussion Sam explains how he used some really cool (but familiar) structures from abstract algebra to restructure analytics software to be cleaner and easier to scale.</p>
+<p>Listening to the podcast I realised that I had solved almost the exact same problem in the same way, but understood the process somewhat differently. I had stumbled into the area when we adjusted our model at IRIS Connect to dump some counters in response to a request from one of our partners to provide some analytics data. I knew that analytics systems were often based on simple integer counters — of the number of videos in each user’s library on a video platform, for example. To work out what has happened in an interval you just had to observe how the counters had transitioned between the start and end of the of that interval.</p>
+<p>This worked fine for the original simple application, but fairly quickly became unmanageable, the idea processing counter dumps being rather unscalable in practice for a number of reasons, not least that any disruption to a counter in the interval being measured would be liable to cause a large loss of information that produced visible anomalies, with the chances of such anomalies growing linearly with the timescales involved. It was also quite difficult to anticipate all the different questions that people would ask and provide appropriate counters.</p>
+<p>Like Sam Ritchie I concluded that <code>this was no way to live</code> and rebuilt the metrics system around a transaction log that captured each transaction in the platform, and processors of said log that counted whatever needed to be counted over an interval. These were of course functions yielding monoidal products of the activity counts I was interested in, all of which could be composed to assemble data sets over longer time periods. This compositionality was important.</p>
+<ul>
+<li><p>The reports would be run each week compiling data going back over years, requiring the processing of each transaction on the platform in the period, so it was important that each run would provide a partial result for succeeding runs.</p></li>
+<li><p>If for some reason a multi-year report need to be generated from scratch a compute cluster could be applied to turn the data around in a sensible timescale. The monoidal structure of the data allows the dataset to be decomposed into individual days or weeks, to be generated on separate nodes, and then combined into the final aggregate dataset.</p></li>
+</ul>
+<p>As well as breaking down the datasets in time, they can be broken down by user and composed up to get data for an organization or group.</p>
+<h3 id="the-key-point">The Key Point</h3>
+<p>What I did <em>not</em> do was to make a study of abstract algebra in order to port some <em>very</em> nifty tools to produce a clean, scalable architecture.</p>
+<p>Rather I observed that the structure of the original system were in a sense unscalable and had become somewhat unmanageable, and rebuilt the system around some structures that were entirely natural and familiar from the Haskell <a href="https://hackage.haskell.org/package/base">base package</a>. No more would I think that when I was using a Haskell list that I was porting powerful ideas from Lisp, though of course that would be the case, but implicitly.</p>
+<p>The Haskell <em>base</em> package, maintained and developed since its origins in the original Haskell Prelude to better reflect those mathematical structures, <a href="../posts/2020-04-13-vitality.html">even at the cost of breakage borne by the whole community</a>, integrates these beautiful mathematical structures into the fabric of Haskell so Haskellers can use them naturally without even being much aware of the toolset that has been assembled for their use, as <a href="https://corecursive.com/050-sam-ritchie-portal-abstractions-2/">the podcast</a> reminds us, over hundreds of years.</p>
+    <hr>
+    <p><i>Got an issue with any of this?</i>
+       <a href="https://github.com/cdornan/cd-blog/issues/21">Please share</a>
+       or drop me a line (see below).
+<div class="uk-margin-small-top"></div>
+</article>
+
+          </div>
+        </main>
+
+        <footer class="cd-footer uk-section uk-section-secondary">
+          <div class="uk-container">
+            <div class="uk-grid-medium uk-child-width-1-3@m uk-child-width-1-1" uk-grid>
+              <div style="text-align: center;">
+                <h4 class>Contact</h3>
+                <p><span uk-icon="mail"></span> <a href="mailto:chris@chrisdornan.com">chris@chrisdornan.com</a></p>
+                <p><span uk-icon="github"></span> <a href="https://github.com/cdornan">cdornan</a></p>
+                <p><span uk-icon="twitter"></span> <a href="https://twitter.com/cdornan">cdornan</a></p>
+              </div>
+              <div style="text-align: center;">
+                <h4 class>Blog</h3>
+                <p><span uk-icon="home"></span> <a href="../">Home</a></p>
+                <p><span uk-icon="info"></span> <a href="../contact.html">About</a></p>
+                <p><span uk-icon="code"></span> <a href="https://github.com/cdornan/cd-blog">Code</a></p>
+                </p>
+              </div>
+              <div style="text-align: center;">
+                <h4 class>Credits</h3>
+                <p><img data-src="/assets/images/lambda.png" uk-img>Built with <a href="https://jaspervdj.be/hakyll/">Hakyll</a></p>
+                </p>
+              </div>
+            </div>
+          </div>
+        </footer>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145166163-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'UA-145166163-1');
+        </script>
+        <script src="https://getuikit.com/assets/uikit/dist/js/uikit.js"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.3.7/js/uikit.min.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.3.7/js/uikit-icons.min.js"></script>
+    </body>
+</html>
